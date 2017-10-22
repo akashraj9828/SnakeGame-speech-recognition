@@ -176,7 +176,7 @@ function renderTexts() {
 		textSize(20)
 		textAlign(LEFT)
 		fill(255, 255, 255)
-		text("commands available:: LEFT \t RIGHT \t UP \t DOWN \t STOP \t RESET \t RELOAD", 10, height - 10)
+		text("commands available:: LEFT \t RIGHT \t UP \t DOWN \t STOP \t START \t FAST \t SLOW \t RESET \t RELOAD", 10, height - 10)
 
 
 		textAlign(RIGHT)
