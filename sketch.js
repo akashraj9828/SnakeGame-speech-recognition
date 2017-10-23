@@ -1,22 +1,22 @@
 /* GAME variables*/
-var scl = 40;
-var food;
-var s;
-var walls = false
-var score = 0
-var pause = false;
-var w;
-var h;
-var difficulty = 0.5;
-/* GAME variables*/
+		var scl = 40;
+		var food;
+		var s;
+		var walls = false
+		var score = 0
+		var pause = true;
+		var w;
+		var h;
+		var difficulty = 0.5;
+		/* GAME variables*/
 
-/*speech rec variables*/
+		/*speech rec variables*/
 
-var recognition_available
+		var recognition_available
 
-var myRec
+		var myRec
 
-var most_recent_word
+		var most_recent_word
 /*speech rec variables*/
 function init_speech_rec() {
 	/*Speech recognition*/
@@ -34,7 +34,7 @@ function init_speech_rec() {
 			console.log('~~~~~~~~~~~')
 			console.log('Speech recognition service disconnected');
 
-			if(!pause)
+			// if(!pause)
 			if (!s.bitted && !s.wallHit) {
 				console.log('restarting service.......')
 				console.log('~~~~~~~~~~~')
@@ -121,10 +121,8 @@ function pickLocation() {
 	food.mult(scl);
 }
 
-
-
-
 function play_pause() {
+	if(!s.bitted && !s.wallHit){
 	if (pause) {
 		pause = false;
 		loop()
@@ -133,6 +131,7 @@ function play_pause() {
 
 		noLoop();
 	}
+}
 
 }
 function renderTexts() {
@@ -142,10 +141,36 @@ function renderTexts() {
 	fill(27, 225, 124, 140)
 	text("score:" + score.toFixed(2), width / 9, height / 20)
 
-	textSize(15)
-	fill(255)
+	
 	if (pause) {
+		textAlign(LEFT)
+		textSize(15)
+		fill(255)
 		text("II PAUSED", width / 10, height / 7)
+
+		textSize(15)
+		fill(0,255,0,150)
+		text("COMMANDS", width /10, height / 7+20)
+		textSize(15)
+		fill(0,255,255,150)
+		L="LEFT: moves snake left"
+		R="RIGHT: moves snake left"
+		U="UP: moves snake left"
+		D="DOWN: moves snake left"
+		STO="STOP: pause the game"
+		STA="START: resume the game"
+		FAS="FAST: speeds up the game /difficulty increases"
+		SLO="SLOW: slow down the game /difficulty decreases"
+		RES="RESET: resets the game"
+		REL="RELOAD: reloads the webpage"
+
+		str= L+"\n"+R+"\n"+U+"\n"+D+"\n"+STO+"\n"+STA+"\n"+FAS+"\n"+SLO+"\n"+RES+"\n"+REL;
+		text(str, width / 10, height / 5)
+
+		textSize(50)
+		textAlign(CENTER)
+		fill(255,100,50,120)
+		text("press 'P' or say \"start\" to play game",width/2,height/1.5)
 		noLoop()
 	}
 
@@ -170,7 +195,7 @@ function renderTexts() {
 		push()
 		textSize(40)
 		textAlign(CENTER)
-		fill(0, 250, 0, 255 - frameCount * 10)
+		fill(0, 250, 0, 255 - frameCount * 20)
 		text("VOICE RECOGNITION  \n AVAILABLE", width / 2, 40)
 
 		textSize(20)
@@ -184,7 +209,7 @@ function renderTexts() {
 		textSize(30)
 		text("COMAAND: \n" + most_recent_word + "  ", width, 40)
 
-		fill(255, 0, 0, 90)
+		fill(255, 100, 0,100)
 		text("Difficulty:" + difficulty.toFixed(2)+ "  ", width, 110)
 		pop()
 	} else {
