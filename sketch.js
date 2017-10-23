@@ -170,7 +170,10 @@ text(str, width / 10, height / 5)
 textSize(50)
 textAlign(CENTER)
 fill(255,100,50,120)
+if(!s.bitted && !s.wallHit)
 text("press 'P' or say \"start\" to play game",width/2,height/1.5)
+else
+text("press 'x' or say \"reset\" to restart game",width/2,height/1.5)
 noLoop()
 }
 
