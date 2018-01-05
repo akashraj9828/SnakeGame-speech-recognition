@@ -1,3 +1,7 @@
+/* game container */
+// c=document.createElement("div");
+// c.id("game-container");
+// d=crea
 /* GAME variables*/
 var scl = 40;
 var food;
@@ -73,6 +77,8 @@ w = floor((windowWidth - scl) / scl) * scl
 h = floor((windowHeight - scl) / scl) * scl
 canvas = createCanvas(w, h);
 canvas.position((windowWidth - width) / 2, (windowHeight - height) / 2)
+canvas.id("game")
+canvas.parent("game-container")
 s = new snake();
 frameRate(10 * difficulty);
 
@@ -110,7 +116,7 @@ if (s.eat(food)) {
 score += difficulty * 10
 pickLocation();
 }
-fill(100, 200, 100, );
+fill(100, 200, 100,120 );
 rect(food.x, food.y, scl, scl);
 }
 
@@ -139,9 +145,20 @@ textAlign(CENTER)
 
 textSize(20)
 fill(27, 225, 124, 140)
-text("score:" + score.toFixed(2), width / 9, height / 20)
+text("score:" + score.toFixed(2), width / 5, height / 20)
 
 
+if(walls){
+	textAlign(RIGHT)
+	textSize(15)
+	fill(255,0,0)
+	text("walls:on", width, 130)
+}else{
+	textAlign(RIGHT)
+	textSize(15)
+	fill(0,255, 0)
+	text("walls:off", width, 130)
+}
 if (pause) {
 textAlign(LEFT)
 textSize(15)
